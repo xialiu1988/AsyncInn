@@ -17,7 +17,7 @@ The very first page is the Home page:
 
 
 
-![home](../Assets/h.png)
+![home](h.png)
 
 
 
@@ -26,7 +26,7 @@ And then if you choose Hotel on the navi bar, you will see :
 
 
 
-![hotel](../Assets/h1.png)
+![hotel](h1.png)
 
 
 
