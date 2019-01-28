@@ -17,7 +17,7 @@ The very first page is the Home page:
 
 
 
-![home](../../lab13-AsyncInn/Assets/h.png)
+![home](/Assets/h.png)
 
 
 
@@ -26,7 +26,7 @@ And then if you choose Hotel on the navi bar, you will see :
 
 
 
-![hotel](h1.png)
+![hotel](Assets/h1.png)
 
 
 Then you click create, it will navigate you to the create a new hotel page:
@@ -34,7 +34,7 @@ Then you click create, it will navigate you to the create a new hotel page:
 
 
 
-![hotel](../Assets/h2.png)
+![hotel](Assets/h2.png)
 
 
 
@@ -42,7 +42,7 @@ And all the other tags have same function, for Room page, when you click "create
 
 
 
-![Room](..\Assets\enum.png)
+![Room](Assets/enum.png)
 
 
 
