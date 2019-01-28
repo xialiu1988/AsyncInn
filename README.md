@@ -17,7 +17,7 @@ The very first page is the Home page:
 
 
 
-![home](../Assets/h.png)
+![home](../../lab13-AsyncInn/Assets/h.png)
 
 
 
