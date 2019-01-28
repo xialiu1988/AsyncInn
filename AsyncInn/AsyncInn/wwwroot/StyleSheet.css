@@ -1,0 +1,46 @@
+﻿body {
+    background-color:antiquewhite;
+}
+h1 {
+    text-align: center;
+}
+.nav {
+    text-align: center;
+}
+.nav ul {
+    list-style: none;
+    display: inline-block;
+    background-color: #444;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.nav li {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2em;
+    line-height: 40px;
+    float:left;
+    height: 40px;
+    border-bottom: 1px solid #888;
+}
+
+.nav a {
+    display: block;
+    padding: 0 10px; 
+    line-height: 2.2;
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav .first a {
+    background-image: none;
+}
+
+.nav a:hover, .nav a:focus {
+    color: #333;
+}
+
+.extra {
+    margin: 0 auto;
+}
