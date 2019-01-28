@@ -17,7 +17,7 @@ The very first page is the Home page:
 
 
 
-![home](h.png)
+![home](../h.png)
 
 
 
