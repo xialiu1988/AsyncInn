@@ -51,4 +51,4 @@ And all the other tags have same function, for Room page, when you click "create
 The web app is based on following database schema:
 
 
-![schema](../Assets/ref.png)
+![schema](Assets/ref.png)
