@@ -2,7 +2,14 @@
     background-color:antiquewhite;
 }
 h1 {
+    font-family: 'Rock Salt', cursive;
     text-align: center;
+}
+p {
+    font-family: 'Schoolbell', cursive;
+    /*position: absolute;*/
+    text-align: center;
+    /*transform: translate(-50%, -50%)*/
 }
 .nav {
     text-align: center;
@@ -10,37 +17,87 @@ h1 {
 .nav ul {
     list-style: none;
     display: inline-block;
-    background-color: #444;
     text-align: center;
     padding: 0;
     margin: 0;
 }
 
-.nav li {
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.2em;
-    line-height: 40px;
-    float:left;
-    height: 40px;
-    border-bottom: 1px solid #888;
-}
 
-.nav a {
-    display: block;
-    padding: 0 10px; 
-    line-height: 2.2;
-    text-decoration: none;
-    color: #fff;
-}
-
-.nav .first a {
-    background-image: none;
-}
-
-.nav a:hover, .nav a:focus {
-    color: #333;
-}
+    .nav li {
+        color: #fff;
+        background-color:coral;
+        display: block;
+        float: left;
+        padding: 1rem;
+        position: relative;
+        text-decoration: none;
+        transition-duration: 0.5s;
+    }
 
 .extra {
     margin: 0 auto;
+}
+
+li a {
+    color: #fff;
+    font-family: 'Freckle Face', cursive;
+}
+
+    li:hover {
+        background-color:dimgray;
+        cursor: pointer;
+    }
+
+
+
+.dropdown {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    transition: all 0.5s ease;
+    margin-top: 1rem;
+    left: 0;
+    display: none;
+}
+ul li:hover > ul,
+ul li ul:hover {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+}
+
+ul li ul li {
+    clear: both;
+    font-family: 'Freckle Face', cursive;
+    font-size: small;
+    width: 70%;
+}
+
+table {
+    width: 50%;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+td, th {
+    border: 1px solid orange;
+}
+h4 {
+    text-align: center;
+}
+
+.row {
+    width: 150px;
+    margin: 0 auto;
+    clear: both;
+}
+
+.row input {
+    width: 100%;
+    clear: both;
+}
+
+div {
+    text-align:center;
 }

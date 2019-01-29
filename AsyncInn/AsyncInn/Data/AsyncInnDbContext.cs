@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static AsyncInn.Models.Room;
 
 namespace AsyncInn.Data
 {
@@ -68,7 +69,81 @@ namespace AsyncInn.Data
 
                 );
 
+            modelBuilder.Entity<Room>().HasData(
 
+                new Room
+                {  ID = 1,
+                   Name = "Seahawk",
+                   Layouts = Layout.OneBedroom
+                },
+
+                  new Room
+                  {
+                      ID = 2,
+                      Name = "Rainer",
+                      Layouts = Layout.Studio
+                  },
+
+                   new Room
+                   {
+                       ID = 3,
+                       Name = "Olympic",
+                       Layouts = Layout.TwoBedroom
+                   },
+                    new Room
+                    {
+                        ID = 4,
+                        Name = "DisneyLand",
+                        Layouts = Layout.OneBedroom
+                    },
+
+                     new Room
+                     {
+                         ID = 5,
+                         Name = "MagicKingdom",
+                         Layouts = Layout.TwoBedroom
+                     },
+                        new Room
+                        {
+                            ID = 6,
+                            Name = "AliceLake",
+                            Layouts = Layout.Studio
+                        }
+
+                );
+
+
+
+            modelBuilder.Entity<Amenities>().HasData(
+
+                new Amenities
+                {  ID = 1,
+                   Name = "Microwave"
+               },
+
+                new Amenities
+                {
+                    ID = 2,
+                    Name = "Air Conditioner"
+                },
+
+                new Amenities
+                {
+                    ID = 3,
+                    Name = "Television"
+                },
+                new Amenities
+                {
+                    ID = 4,
+                    Name = "Mini Bar"
+                },
+                new Amenities
+                {
+                    ID = 5,
+                    Name = "CoffeSet"
+                }
+
+                );
 
 
         }
