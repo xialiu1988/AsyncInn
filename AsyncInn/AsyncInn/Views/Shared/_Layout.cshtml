@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link href="~/StyleSheet.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Architects+Daughter|Freckle+Face|Rock+Salt|Schoolbell" rel="stylesheet">
 </head>
 <body>
   
@@ -13,13 +14,22 @@
         <div class="nav">
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/Hotel">Hotel</a></li>
-                <li><a href="/HotelRoom">HotelRoom</a></li>
-                <li><a href="/Room">Room</a></li>
-                <li><a href="/RoomAmenities">RoomAmenities</a></li>
-                <li><a href="/Amenities">Amenities</a></li>
-            </ul>
-        </div>
+                <li>
+                    <a href="/Hotel">Hotel</a>
+
+                    <ul class="dropdown">
+                        <li><a href="/HotelRoom">HotelRoom</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/Room">Room</a>
+                    <ul class="dropdown">
+                        <li><a href="/RoomAmenities">RoomAmenities</a></li>
+                    </ul>
+                </li>
+                    <li><a href="/Amenities">Amenities</a></li>
+                </ul>
+</div>
     </header>
 
 
