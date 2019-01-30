@@ -1,4 +1,6 @@
-﻿using AsyncInn.Models.Interfaces;
+﻿using AsyncInn.Data;
+using AsyncInn.Models.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,29 +10,42 @@ namespace AsyncInn.Models.Services
 {
     public class AmenitiesManagementService : IAmenitiesManager
     {
-        public Task CreateAmenities(Amenities Amenities)
+
+        private AsyncInnDbContext _context { get; }
+
+        public AmenitiesManagementService(AsyncInnDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        public Task DeleteAmenities(int id)
+        public async Task CreateAmenities(Amenities Amenities)
         {
-            throw new NotImplementedException();
+            _context.Amenities.Add(Amenities);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<Amenities> GetAmenities(int id)
+        public async Task DeleteAmenities(int id)
         {
-            throw new NotImplementedException();
+            Amenities amenities = _context.Amenities.FirstOrDefault(a => a.ID == id);
+            _context.Amenities.Remove(amenities);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<IEnumerable<Amenities>> GetAmenities()
+        public async Task<Amenities> GetAmenities(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Amenities.FirstOrDefaultAsync(amenities=>amenities.ID==id);
+            
         }
 
-        public Task UpdateAmenities(Amenities Amenities)
+        public async Task<IEnumerable<Amenities>> GetAmenities()
         {
-            throw new NotImplementedException();
+            return await _context.Amenities.ToListAsync();
+        }
+
+        public async Task UpdateAmenities(Amenities amenities)
+        {
+            _context.Amenities.Update(amenities);
+            await _context.SaveChangesAsync();
         }
     }
 }
