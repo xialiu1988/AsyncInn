@@ -29,6 +29,7 @@ namespace AsyncInn.Controllers
             if(!String.IsNullOrEmpty(HotelName))
             {
                 hotels = hotels.Where(s => s.Name.ToLower().Contains(HotelName.ToLower()));
+               hotels= hotels.OrderByDescending(h => h.Name);
             }
             return View(hotels);
         }

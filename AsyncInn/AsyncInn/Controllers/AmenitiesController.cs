@@ -27,6 +27,7 @@ namespace AsyncInn.Controllers
             if (!String.IsNullOrEmpty(amenitiesName))
             {
                 amenities = amenities.Where(a => a.Name.ToLower().Contains(amenitiesName.ToLower()));
+                amenities=amenities.OrderByDescending(a => a.Name);
             }
             return View(amenities);
         }
