@@ -5,7 +5,14 @@
     Layout = "_Layout";
 }
 
-
+<div>
+    <form asp-controller="Room" asp-action="Index">
+        <p>
+            Search By Name: <input type="text" name="RoomName">
+            <input type="submit" value="Filter" />
+        </p>
+    </form>
+</div>
 
 <p>
     <a asp-action="Create">Create New</a>
