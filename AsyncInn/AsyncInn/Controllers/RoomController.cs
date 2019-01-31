@@ -29,6 +29,8 @@ namespace AsyncInn.Controllers
             if (!String.IsNullOrEmpty(RoomName))
             {
                 rooms = rooms.Where(r => r.Name.ToLower().Contains(RoomName.ToLower()));
+                rooms=rooms.OrderByDescending(ro=>ro.Name);
+
             }
 
             return View(rooms);
