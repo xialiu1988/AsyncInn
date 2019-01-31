@@ -45,6 +45,24 @@ And all the other tags have same function, for Room page, when you click "create
 ![Room](Assets/enum.png)
 
 
+#search bar
+
+You can type in keywords you like to search Hotel/Room/Amenities
+
+
+
+![img](Assets/searchhotel.png)
+
+
+
+![img](Assets/room.png)
+
+
+
+
+![img](Assets/ami.png)
+
+
 
 #Reference
 
