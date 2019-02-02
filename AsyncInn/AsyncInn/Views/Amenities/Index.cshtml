@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
     Layout = "_Layout";
 }
-
+<h4>There are @Model.Count() amenities in the system.</h4>
 <div>
     <form asp-controller="Amenities" asp-action="Index">
         <p>
@@ -22,7 +22,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
-            <th></th>
+            
         </tr>
     </thead>
     <tbody>
@@ -31,6 +31,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
+           
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.ID">Details</a> |

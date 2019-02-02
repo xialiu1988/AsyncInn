@@ -32,12 +32,19 @@ namespace AsyncInn.Models.Services
 
         public async Task<Room> GetRoom(int id)
         {
-            return await _context.Rooms.FirstOrDefaultAsync(room => room.ID == id);
+            return await _context.Rooms.FirstOrDefaultAsync(ro => ro.ID == id);
         }
 
         public async Task<IEnumerable<Room>> GetRooms()
         {
-            return await _context.Rooms.ToListAsync();
+            var rooms = await _context.Rooms.ToListAsync();
+
+            foreach (Room ro in rooms)
+            {
+                ro.RoomAmenities = await _context.RoomAmenities.Where(am => am.RoomID == ro.ID).ToListAsync();
+            }
+
+            return rooms;
         }
 
         public async Task UpdateRoom(Room room)

@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
     Layout = "_Layout";
 }
-
+<h4>There are @Model.Count() Rooms total.</h4>
 <div>
     <form asp-controller="Room" asp-action="Index">
         <p>
@@ -26,6 +26,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Layouts)
             </th>
+            <th> @Html.DisplayNameFor(model => model.RoomAmenities)</th>
             <th></th>
         </tr>
     </thead>
@@ -37,6 +38,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Layouts)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomAmenities.Count)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
