@@ -27,9 +27,9 @@ namespace AsyncInn.Controllers
         }
 
         // GET: HotelRoom/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? roomid,int? hotelid)
         {
-            if (id == null)
+            if (hotelid == null||roomid==null)
             {
                 return NotFound();
             }
@@ -37,7 +37,7 @@ namespace AsyncInn.Controllers
             var hotelRoom = await _context.HotelRooms
                 .Include(h => h.Hotel)
                 .Include(h => h.Room)
-                .FirstOrDefaultAsync(m => m.HotelID == id);
+                .FirstOrDefaultAsync(m => m.HotelID == hotelid && m.RoomID==roomid);
             if (hotelRoom == null)
             {
                 return NotFound();
@@ -73,14 +73,16 @@ namespace AsyncInn.Controllers
         }
 
         // GET: HotelRoom/Edit/5
-        public async Task<IActionResult> Edit(int ? id)
+        public async Task<IActionResult> Edit(int? roomid, int? hotelid)
         {
-            if (id == null)
+            if (hotelid == null||roomid==null)
             {
                 return NotFound();
             }
 
-            var hotelRoom = await _context.HotelRooms.FindAsync(id);
+            var hotelRoom = await _context.HotelRooms.Include(h => h.Hotel)
+                .Include(r => r.Room)
+                .FirstOrDefaultAsync(hr => hr.RoomID == roomid && hr.HotelID == hotelid);
             if (hotelRoom == null)
             {
                 return NotFound();
@@ -95,9 +97,9 @@ namespace AsyncInn.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("HotelID,RoomNumber,RoomID,Rate,PetFriendly")] HotelRoom hotelRoom)
+        public async Task<IActionResult> Edit(int hotelid,int roomid, [Bind("HotelID,RoomNumber,RoomID,Rate,PetFriendly")] HotelRoom hotelRoom)
         {
-            if (id != hotelRoom.HotelID)
+            if (hotelid != hotelRoom.HotelID||roomid!=hotelRoom.RoomID)
             {
                 return NotFound();
             }
@@ -111,7 +113,7 @@ namespace AsyncInn.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!HotelRoomExists(hotelRoom.HotelID))
+                    if (!HotelRoomExists(hotelRoom.RoomID, hotelRoom.HotelID))
                     {
                         return NotFound();
                     }
@@ -128,9 +130,9 @@ namespace AsyncInn.Controllers
         }
 
         // GET: HotelRoom/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? roomid, int? hotelid)
         {
-            if (id == null)
+            if (roomid == null || hotelid == null)
             {
                 return NotFound();
             }
@@ -138,7 +140,7 @@ namespace AsyncInn.Controllers
             var hotelRoom = await _context.HotelRooms
                 .Include(h => h.Hotel)
                 .Include(h => h.Room)
-                .FirstOrDefaultAsync(m => m.HotelID == id);
+                .FirstOrDefaultAsync(m => m.RoomID == roomid && m.HotelID==hotelid);
             if (hotelRoom == null)
             {
                 return NotFound();
@@ -150,17 +152,19 @@ namespace AsyncInn.Controllers
         // POST: HotelRoom/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int roomid,int hotelid)
         {
-            var hotelRoom = await _context.HotelRooms.FindAsync(id);
+            var hotelRoom = await _context.HotelRooms.Include(h => h.Hotel)
+               .Include(r => r.Room)
+               .FirstOrDefaultAsync(hr => hr.RoomID == roomid && hr.HotelID == hotelid);
             _context.HotelRooms.Remove(hotelRoom);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool HotelRoomExists(int id)
+        private bool HotelRoomExists(int roomid,int hotelid)
         {
-            return _context.HotelRooms.Any(e => e.HotelID == id);
+            return _context.HotelRooms.Any(e => e.HotelID == hotelid&& e.RoomID==roomid);
         }
     }
 }
