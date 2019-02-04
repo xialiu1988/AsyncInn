@@ -44,9 +44,9 @@
                 @Html.DisplayFor(modelItem => item.Room.ID)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { item.HotelID,item.RoomID }) |
-                @Html.ActionLink("Details", "Details", new { item.HotelID, item.RoomID }) |
-                @Html.ActionLink("Delete", "Delete", new { item.HotelID, item.RoomID })
+                @Html.ActionLink("Edit", "Edit", new { item.HotelID,item.RoomNumber }) |
+                @Html.ActionLink("Details", "Details", new { item.HotelID, item.RoomNumber }) |
+                @Html.ActionLink("Delete", "Delete", new { item.HotelID, item.RoomNumber })
             </td>
         </tr>
 }
