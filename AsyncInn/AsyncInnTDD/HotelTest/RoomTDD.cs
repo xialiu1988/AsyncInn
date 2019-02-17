@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Xunit;
+using static AsyncInn.Models.Room;
 
 namespace AsyncInnTDD.HotelTest
 {
@@ -102,5 +103,90 @@ namespace AsyncInnTDD.HotelTest
             }
         }
 
+        /// <summary>
+        /// can update a room
+        /// </summary>
+        [Fact]
+        public  async void canUpdateroom()
+        {
+            DbContextOptions<AsyncInnDbContext> options = new DbContextOptionsBuilder<AsyncInnDbContext>().UseInMemoryDatabase("UpdateRoom").Options;
+
+            using (AsyncInnDbContext context = new AsyncInnDbContext(options))
+            {
+                Room r = new Room();
+                r.ID = 1;
+                r.Name = "happyroom";
+                r.Layouts = Layout.Studio;
+
+                RoomManagementService rService = new RoomManagementService(context);
+                await rService.CreateRoom(r);
+
+                Room res = await rService.GetRoom(r.ID);
+                res.Layouts = Layout.OneBedroom;
+                await rService.UpdateRoom(res);
+
+                var result = await context.Rooms.FirstOrDefaultAsync(i => i.ID == r.ID);
+                Assert.Equal(Layout.OneBedroom, result.Layouts);
+            }
+        }
+
+
+
+        /// <summary>
+        /// get a single room
+        /// </summary>
+        [Fact]
+        public async void cangetAroom()
+        {
+            DbContextOptions<AsyncInnDbContext> options = new DbContextOptionsBuilder<AsyncInnDbContext>().UseInMemoryDatabase("GetARoom").Options;
+
+            using (AsyncInnDbContext context = new AsyncInnDbContext(options))
+            {
+                Room r = new Room();
+                r.ID = 1;
+                r.Name = "SpaRoom";
+                r.Layouts = Layout.Studio;
+
+                RoomManagementService roomService = new RoomManagementService(context);
+                await roomService.CreateRoom(r);
+
+                Room result = await roomService.GetRoom(1);
+
+                Assert.Equal(r, result);
+            }
+        }
+
+        /// <summary>
+        /// delete a room
+        /// </summary>
+        [Fact]
+        public async void CanDeleteRoom()
+        {
+            DbContextOptions<AsyncInnDbContext> options = new DbContextOptionsBuilder<AsyncInnDbContext>().UseInMemoryDatabase("DeleteRoom").Options;
+
+            using (AsyncInnDbContext context = new AsyncInnDbContext(options))
+            {
+                Room r = new Room();
+                r.ID = 1;
+                r.Name = "SpaRoom";
+                r.Layouts = Layout.Studio;
+
+
+                Room r2 = new Room();
+                r2.ID = 2;
+                r2.Name = "moonlight";
+                r2.Layouts = Layout.OneBedroom;
+
+
+                RoomManagementService roomService = new RoomManagementService(context);
+                await roomService.CreateRoom(r);
+                await roomService.CreateRoom(r2);
+
+                await roomService.DeleteRoom(r.ID);
+
+                Room result = await context.Rooms.FirstOrDefaultAsync(i => i.ID == r.ID);
+                Assert.Null(result);
+            }
+        }
     }
 }
